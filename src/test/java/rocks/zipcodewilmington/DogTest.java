@@ -3,12 +3,36 @@ package rocks.zipcodewilmington;
 import org.junit.Assert;
 import org.junit.Test;
 import rocks.zipcodewilmington.animals.Dog;
+import rocks.zipcodewilmington.animals.animal_storage.DogHouse;
+
+import java.util.Date;
 
 /**
  * @author leon on 4/19/18.
  */
 public class DogTest {
     // TODO - Create tests for `new Dog(String name, Date birthDate, Integer id)`
+    @Test
+    public void testNewDog() {
+        // given
+        String giveName = "Daisy";
+        Date giveBirthDate = new Date();
+        Integer givenId = 22;
+
+        // When (dog is constructed)
+        Dog dog = new Dog(giveName,giveBirthDate,givenId);
+
+        // When  (retrieve data from dog)
+        String retrieveName = dog.getName();
+        Date retrieveBirthDate = dog.getBirthDate();
+        Integer retrieveId = dog.getId();
+
+        // Then (expected data and retrieved data)
+        Assert.assertEquals(giveName, retrieveName);
+        Assert.assertEquals(giveBirthDate, retrieveBirthDate);
+        Assert.assertEquals(givenId, retrieveId);
+
+    }
     // TODO - Create tests for `speak`
     // TODO - Create tests for `setBirthDate(Date birthDate)`
     // TODO - Create tests for `void eat(Food food)`
