@@ -2,6 +2,7 @@ package rocks.zipcodewilmington;
 
 import org.junit.Assert;
 import org.junit.Test;
+import rocks.zipcodewilmington.animals.Animal;
 import rocks.zipcodewilmington.animals.Cat;
 import rocks.zipcodewilmington.animals.animal_creation.AnimalFactory;
 import rocks.zipcodewilmington.animals.animal_storage.CatHouse;
@@ -29,12 +30,14 @@ public class CatHouseTest {
     @Test
     public void testRemoveId() {
         // given
-        Integer givenId = 3;
-        Cat cat = new Cat(null, null, givenId);
+        String givenName = "nemo";
+        Cat cat = AnimalFactory.createCat(givenName, null);
+        CatHouse.clear();
         CatHouse.add(cat);
 
         // When
         CatHouse.remove(givenId);
+
 
         // Then
         Assert.assertEquals(null,CatHouse.getCatById(givenId));
@@ -63,7 +66,6 @@ public class CatHouseTest {
         CatHouse.add(cat);
         // Then
         Assert.assertEquals(cat, CatHouse.getCatById(givenId));
-
     }
     // TODO - Create tests for `Integer getNumberOfCats()`
     @Test
@@ -78,14 +80,11 @@ public class CatHouseTest {
         CatHouse.add(cat);
         CatHouse.add(cat2);
         int numCats = 2;
+        int getNumberCats = CatHouse.getNumberOfCats();
 
         // Then
-        Assert.assertEquals(numCats, CatHouse.getNumberOfCats());
-
+        Assert.assertEquals(numCats, getNumberCats);
     }
-
-
-
 }
 
 
