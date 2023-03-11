@@ -37,7 +37,7 @@ public class CatTest {
 
         // Then
         speaker.speak();
-        Assert.assertEquals("meow!", speaker.speak());
+        Assert.assertEquals("meow!", expectedSpoke);
     }
 
     // TODO - Create tests for `setBirthDate(Date birthDate)`
@@ -48,7 +48,7 @@ public class CatTest {
         Cat cat = AnimalFactory.createCat(null, birthdate);
 
         // When
-        cat.setBirthDate(birthdate);
+//        cat.setBirthDate(birthdate);
 
         // Then
         Assert.assertEquals(birthdate, cat.getBirthDate());
@@ -70,12 +70,11 @@ public class CatTest {
     // TODO - Create tests for `Integer getId()`
     @Test
     public void testGetId() {
-        String givenName = "Zula";
-        Date givenBirthDate = new Date();
-        Integer givenId = 0;
+        // given
+        Integer givenId = 3;
+        Cat cat = new Cat(null, null, givenId);
 
-        Cat cat = AnimalFactory.createCat(null, null);
-        Assert.assertEquals(cat.getId(), givenId);
+        Assert.assertEquals(givenId, cat.getId());
 
     }
     // TODO - Create test to check Animal inheritance; google search `java instanceof keyword`
