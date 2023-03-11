@@ -56,7 +56,7 @@ public class DogTest {
         Dog dog = AnimalFactory.createDog(null, birthDate);
 
         // When
-//        dog.setBirthDate(birthDate);
+        dog.setBirthDate(birthDate);
 
         // Then
         Assert.assertEquals(birthDate, dog.getBirthDate());

@@ -48,7 +48,7 @@ public class CatTest {
         Cat cat = AnimalFactory.createCat(null, birthdate);
 
         // When
-//        cat.setBirthDate(birthdate);
+        cat.setBirthDate(birthdate);
 
         // Then
         Assert.assertEquals(birthdate, cat.getBirthDate());
