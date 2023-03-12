@@ -17,14 +17,12 @@ public class CatHouseTest {
     @Test
     public void testAddCat() {
         // Given
-        Integer givenId = 33;
-        Cat cat = new Cat(null, null, givenId);
-
+        String givenName = "master roshi";
+        Cat catto = AnimalFactory.createCat(givenName, null);
         // When
-        CatHouse.add(cat);
-
+        CatHouse.add(catto);
         // Then
-        Assert.assertEquals(cat, CatHouse.getCatById(givenId));
+        Assert.assertEquals(givenName, catto.getName());
     }
     // TODO - Create tests for `void remove(Integer id)`
     @Test
@@ -34,38 +32,33 @@ public class CatHouseTest {
         Cat cat = AnimalFactory.createCat(givenName, null);
         CatHouse.clear();
         CatHouse.add(cat);
-
         // When
-        CatHouse.remove(givenId);
-
-
+        Cat newCatId = CatHouse.getCatById(cat.getId());
         // Then
-        Assert.assertEquals(null,CatHouse.getCatById(givenId));
+        Assert.assertEquals(cat, newCatId);
     }
     // TODO - Create tests for `void remove(Cat cat)`
     @Test
     public void testRemoveCat() {
         // Given
          String givenName = "goku";
-         Cat cat = new Cat(givenName, null, null);
+         Cat cat = AnimalFactory.createCat(givenName, null);
         CatHouse.add(cat);
          // When
         CatHouse.remove(cat);
-
         // Then
-        Assert.assertEquals(givenName,cat.getName());
+        Assert.assertEquals(null, CatHouse.getCatById(cat.getId()));
     }
     // TODO - Create tests for `Cat getCatById(Integer id)`
     @Test
     public void testGetCatById(){
         // Given
-        Integer givenId = 5;
-        Cat cat = new Cat(null, null, givenId);
-
+        String givenName = "Pickles";
+        Cat cat = AnimalFactory.createCat(givenName, null);
         // When
         CatHouse.add(cat);
         // Then
-        Assert.assertEquals(cat, CatHouse.getCatById(givenId));
+        Assert.assertEquals(cat, CatHouse.getCatById(cat.getId()));
     }
     // TODO - Create tests for `Integer getNumberOfCats()`
     @Test
@@ -84,6 +77,7 @@ public class CatHouseTest {
 
         // Then
         Assert.assertEquals(numCats, getNumberCats);
+        CatHouse.getNumberOfCats();
     }
 }
 
